@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 import 'package:news/models/category_model.dart';
 
@@ -71,8 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
   bool ishindi = false;
   bool isenglish = false;
   bool isloading = true;
-  
-  
 
   fetchnews() async {
     var response = await http.get(
@@ -211,7 +207,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: FlatButton(
                   onPressed: () => Share.share(
-                      'Hey! Check this news out by TimesSquare ' + data[i]['url']),
+                      'Hey! Check this news out by TimesSquare ' +
+                          data[i]['url']),
                   child: Icon(
                     Icons.share,
                     color: Colors.white,
@@ -225,14 +222,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ));
   }
 
-  
-
-
   bool isSwitched = false;
   void initState() {
     super.initState();
     fetchnews();
-    
+
     getdemostatus1();
   }
 
@@ -301,20 +295,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 40),
-                   Switch(
+                  Switch(
                     value: isSwitched,
                     onChanged: (value) async {
                       setState(() async {
                         getdemostatus(value);
                         print(value.toString());
-                        if(value)
-                        {
-                         await  PushNotificationService().initialise();
-                         await PushNotificationService().fcmSubscribe();
-                        }
-                        else
-                        await PushNotificationService().fcmUnSubscribe();
-                         isSwitched = value;
+                        if (value) {
+                          await PushNotificationService().initialise();
+                          PushNotificationService().fcmSubscribe();
+                        } else
+                          PushNotificationService().fcmUnSubscribe();
+                        isSwitched = value;
                       });
                     },
                   ),
@@ -397,10 +389,4 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisSize: MainAxisSize.min,
         ));
   }
-
- 
- 
-    
-  
 }
-

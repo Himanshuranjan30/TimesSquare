@@ -22,12 +22,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   int count = 1;
   SharedPreferences prefs;
-  getdemostatus() async {
-    prefs = await SharedPreferences.getInstance();
-    setState(() {
-      prefs.setBool('isdemoover', true);
-    });
-  }
+  // getdemostatus() async {
+  //   prefs = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     prefs.setBool('isdemoover', true);
+  //   });
+  // }
 
   bool isdemoover = false;
 
@@ -43,19 +43,16 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     getdemostatus1();
   }
 
+  final pageDecoration = const PageDecoration(
+    titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+    bodyTextStyle: TextStyle(fontSize: 19.0),
+    descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+    pageColor: Colors.white,
+    imagePadding: EdgeInsets.zero,
+  );
+
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
-
-    getdemostatus1();
-    const pageDecoration = const PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
-      bodyTextStyle: bodyStyle,
-      descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
-      imagePadding: EdgeInsets.zero,
-    );
-
     return isdemoover
         ? HomeScreen()
         : IntroductionScreen(
@@ -90,7 +87,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ],
             onDone: () => {
-              getdemostatus(),
               Navigator.of(context).pushNamed('/home_screen'),
             },
             //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
