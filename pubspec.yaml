@@ -72,23 +72,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/chemistry.png
-    - assets/graduation.png
-    - assets/medal.png
-    - assets/processor.png
-    - assets/revenue.png
-    - assets/virus.png
-    - assets/film.png
-    - assets/hat.png
-    - assets/conference.png
-    - assets/airplane.png
-    - assets/icon.png
-    - assets/newss.png
-    - assets/img1.png
-    - assets/img2.png
-    - assets/img3.png
-    - assets/img4.png
-    
+    - assets/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

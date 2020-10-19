@@ -3,8 +3,6 @@ import 'package:introduction_screen/introduction_screen.dart';
 
 import 'package:news/screens/homescreen.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 class OnBoardingPage extends StatefulWidget {
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
@@ -21,7 +19,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   }
 
   int count = 1;
-  SharedPreferences prefs;
+  // SharedPreferences prefs;
   // getdemostatus() async {
   //   prefs = await SharedPreferences.getInstance();
   //   setState(() {
@@ -29,19 +27,19 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   //   });
   // }
 
-  bool isdemoover = false;
+  // bool isdemoover = false;
+  // getdemostatus1() async {
+  //   prefs = await SharedPreferences.getInstance();
+  //   print('here');
+  //   setState(() {
+  //     isdemoover = prefs.getBool('isdemoover') ?? false;
+  //   });
+  // }
 
-  getdemostatus1() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isdemoover = prefs.getBool('isdemoover') ?? false;
-    });
-  }
-
-  void initState() {
-    super.initState();
-    getdemostatus1();
-  }
+  // void initState() {
+  //   super.initState();
+  //   getdemostatus1();
+  // }
 
   final pageDecoration = const PageDecoration(
     titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
@@ -53,6 +51,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isdemoover = ModalRoute.of(context).settings.arguments as bool;
     return isdemoover
         ? HomeScreen()
         : IntroductionScreen(
@@ -86,8 +85,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 decoration: pageDecoration,
               ),
             ],
-            onDone: () => {
-              Navigator.of(context).pushNamed('/home_screen'),
+            onDone: () {
+              Navigator.of(context).popAndPushNamed('/home_screen');
             },
             //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
             showSkipButton: true,

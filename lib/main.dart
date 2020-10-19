@@ -5,6 +5,7 @@ import 'package:news/screens/about.dart';
 import 'package:news/screens/cat_news.dart';
 import 'package:news/screens/homescreen.dart';
 import 'package:news/screens/intro.dart';
+import 'package:news/screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       // Setup an observer that will save the current route into the saved state
 
       navigatorKey: GlobalKey(),
-      home: OnBoardingPage(),
+      home: SplashScreen(),
       routes: {
         '/Category_Screen': (ctx) => CategoryNews(),
         '/home_screen': (ctx) => HomeScreen(),
